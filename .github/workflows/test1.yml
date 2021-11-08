@@ -133,4 +133,9 @@ jobs:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
           args: --severity-threshold=high
+  deploy:
+    needs: SAST
+    runs-on: ubuntu-latest
+    steps:
+    - run: echo "Deploy to production"
  
