@@ -20,17 +20,22 @@ jobs:
         echo "$STEP_ENVIRONMENT_VARIABLE"
   style:
     needs: pre-build #previos step. reference from many jobs for parallelism
-    runs-on: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        python: [ 2.7, 3.8, 3.9 ]
+        os: [ubuntu-latest]
+#         python-version: ['2.7', '3.8', '3.9']
+        python-version: ['3.9']
+        exclude:
+          - os: macos-latest
+            python-version: '3.8'
     steps:
     - name: Check out repository code
       uses: actions/checkout@v2
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: ${{ matrix.python }}
+        python-version: ${{ matrix.python-version }}
     - name: Install dependencies
       run: |
         python --version
