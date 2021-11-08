@@ -20,7 +20,7 @@ jobs:
         echo "$STEP_ENVIRONMENT_VARIABLE"
   style:
     needs: pre-build #previos step. reference from many jobs for parallelism
-    runs-on: ubuntu-latest
+    runs-on: [ubuntu-latest, macos-latest]
     strategy:
       matrix:
         python: [ 2.7, 3.8, 3.9 ]
