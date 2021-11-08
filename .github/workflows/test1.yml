@@ -24,8 +24,8 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-#         python-version: ['2.7', '3.8', '3.9']
-        python-version: ['3.9']
+        python: ['2.7', '3.8', '3.9']
+#         python-version: ['3.9']
         exclude:
           - os: macos-latest
             python-version: '3.8'
@@ -35,7 +35,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: ${{ matrix.python-version }}
+        python-version: ${{ matrix.python }}
     - name: Install dependencies
       run: |
         python --version
@@ -99,3 +99,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: echo "Deploy to production"
+    
