@@ -137,5 +137,5 @@ jobs:
     needs: SAST
     runs-on: ubuntu-latest
     steps:
-    - run: echo "Deploy to production"
+    - run: echo "Deploy to  production"
  
